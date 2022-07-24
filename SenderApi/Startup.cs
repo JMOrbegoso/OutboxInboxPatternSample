@@ -1,4 +1,7 @@
-﻿namespace SenderApi
+﻿using Microsoft.EntityFrameworkCore;
+using SenderApi.Repositories;
+
+namespace SenderApi
 {
     public class Startup
     {
@@ -13,6 +16,12 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                var connectionString = this.Configuration.GetConnectionString("Database");
+                options.UseSqlServer(connectionString);
+            });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             services.AddEndpointsApiExplorer();
