@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Receiver.Repositories;
+
 namespace Receiver
 {
     public class Program
@@ -13,6 +16,12 @@ namespace Receiver
                 .ConfigureServices((hostContext, services) =>
                 {
                     IConfiguration configuration = hostContext.Configuration;
+
+                    services.AddDbContext<AppDbContext>(options =>
+                    {
+                        var connectionString = configuration.GetConnectionString("Database");
+                        options.UseSqlServer(connectionString);
+                    });
 
                     services.AddHostedService<Worker>();
                 });
