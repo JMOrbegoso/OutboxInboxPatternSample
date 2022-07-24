@@ -4,14 +4,18 @@ namespace Receiver
     {
         public static void Main(string[] args)
         {
-            IHost host = Host.CreateDefaultBuilder(args)
-                .ConfigureServices(services =>
-                {
-                    services.AddHostedService<Worker>();
-                })
-                .Build();
+            CreateHostBuilder(args).Build().Run();
+        }
 
-            host.Run();
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
+                .ConfigureServices((hostContext, services) =>
+                {
+                    IConfiguration configuration = hostContext.Configuration;
+
+                    services.AddHostedService<Worker>();
+                });
         }
     }
 }
