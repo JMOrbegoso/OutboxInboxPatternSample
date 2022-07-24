@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenderApi", "SenderApi\SenderApi.csproj", "{5F81CC1E-5917-4F2D-8949-EFEAC8EFFBF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutboxProcessor", "OutboxProcessor\OutboxProcessor.csproj", "{ABE428BA-2077-4710-90F8-6E4CDC1925EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{5F81CC1E-5917-4F2D-8949-EFEAC8EFFBF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F81CC1E-5917-4F2D-8949-EFEAC8EFFBF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F81CC1E-5917-4F2D-8949-EFEAC8EFFBF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABE428BA-2077-4710-90F8-6E4CDC1925EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABE428BA-2077-4710-90F8-6E4CDC1925EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABE428BA-2077-4710-90F8-6E4CDC1925EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABE428BA-2077-4710-90F8-6E4CDC1925EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
