@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using OutboxProcessor.Repositories;
+
 namespace OutboxProcessor
 {
     public class Program
@@ -13,6 +16,12 @@ namespace OutboxProcessor
                 .ConfigureServices((hostContext, services) =>
                 {
                     IConfiguration configuration = hostContext.Configuration;
+
+                    services.AddDbContext<AppDbContext>(options =>
+                    {
+                        var connectionString = configuration.GetConnectionString("Database");
+                        options.UseSqlServer(connectionString);
+                    });
 
                     services.AddHostedService<Worker>();
                 });
