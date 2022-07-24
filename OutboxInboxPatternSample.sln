@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenderApi", "SenderApi\Send
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutboxProcessor", "OutboxProcessor\OutboxProcessor.csproj", "{ABE428BA-2077-4710-90F8-6E4CDC1925EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Receiver", "Receiver\Receiver.csproj", "{86A52284-0167-471B-90F7-504A55EB3268}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{ABE428BA-2077-4710-90F8-6E4CDC1925EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABE428BA-2077-4710-90F8-6E4CDC1925EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABE428BA-2077-4710-90F8-6E4CDC1925EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86A52284-0167-471B-90F7-504A55EB3268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A52284-0167-471B-90F7-504A55EB3268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A52284-0167-471B-90F7-504A55EB3268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A52284-0167-471B-90F7-504A55EB3268}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
