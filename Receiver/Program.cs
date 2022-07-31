@@ -22,8 +22,6 @@ namespace Receiver
                         var connectionString = configuration.GetConnectionString("Database");
                         options.UseSqlServer(connectionString);
                     });
-
-                    services.AddHostedService<Worker>();
                 });
         }
     }
