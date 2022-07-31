@@ -46,8 +46,6 @@ namespace OutboxProcessor
                     {
                         quarz.WaitForJobsToComplete = true;
                     });
-
-                    services.AddHostedService<Worker>();
                 });
         }
     }
