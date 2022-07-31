@@ -23,6 +23,9 @@ namespace OutboxProcessor
                         options.UseSqlServer(connectionString);
                     });
 
+                    services.AddScoped<IOutboxRepository, OutboxRepository>();
+                    services.AddScoped<IUnitOfWork, UnitOfWork>();
+
                     services.AddHostedService<Worker>();
                 });
         }
