@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using OutboxProcessor.Jobs;
 using OutboxProcessor.Repositories;
+using Quartz;
 
 namespace OutboxProcessor
 {
@@ -25,6 +27,25 @@ namespace OutboxProcessor
 
                     services.AddScoped<IOutboxRepository, OutboxRepository>();
                     services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+                    services.AddQuartz(quarz =>
+                    {
+                        quarz.UseMicrosoftDependencyInjectionJobFactory();
+
+                        quarz.ScheduleJob<SendOutboxJob>(trigger =>
+                        {
+                            trigger.WithSimpleSchedule(x =>
+                            {
+                                x.WithIntervalInSeconds(3)
+                                 .RepeatForever();
+                            }).StartNow();
+                        });
+                    });
+
+                    services.AddQuartzHostedService(quarz =>
+                    {
+                        quarz.WaitForJobsToComplete = true;
+                    });
 
                     services.AddHostedService<Worker>();
                 });
