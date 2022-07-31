@@ -22,6 +22,9 @@ namespace Receiver
                         var connectionString = configuration.GetConnectionString("Database");
                         options.UseSqlServer(connectionString);
                     });
+
+                    services.AddScoped<IInboxRepository, InboxRepository>();
+                    services.AddScoped<IUnitOfWork, UnitOfWork>();
                 });
         }
     }
