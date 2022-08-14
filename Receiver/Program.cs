@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Quartz;
 using Receiver.Jobs;
 using Receiver.Repositories;
+using Receiver.Workers;
 
 namespace Receiver
 {
@@ -46,6 +47,8 @@ namespace Receiver
                     {
                         quarz.WaitForJobsToComplete = true;
                     });
+
+                    services.AddHostedService<ReceiveMessageWorker>();
                 });
         }
     }
