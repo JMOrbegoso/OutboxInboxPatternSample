@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Quartz;
+using Receiver.Jobs;
 using Receiver.Repositories;
 
 namespace Receiver
@@ -25,6 +27,25 @@ namespace Receiver
 
                     services.AddScoped<IInboxRepository, InboxRepository>();
                     services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+                    services.AddQuartz(quarz =>
+                    {
+                        quarz.UseMicrosoftDependencyInjectionJobFactory();
+
+                        quarz.ScheduleJob<SendEmailJob>(trigger =>
+                        {
+                            trigger.WithSimpleSchedule(x =>
+                            {
+                                x.WithIntervalInSeconds(3)
+                                 .RepeatForever();
+                            }).StartNow();
+                        });
+                    });
+
+                    services.AddQuartzHostedService(quarz =>
+                    {
+                        quarz.WaitForJobsToComplete = true;
+                    });
                 });
         }
     }
